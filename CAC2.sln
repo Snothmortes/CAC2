@@ -1,0 +1,31 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio Version 16
+VisualStudioVersion = 16.0.31729.503
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "CAC2", "..\CAC2\CAC2\CAC2.csproj", "{EA252E79-A8F2-45E7-BED2-67D1C8F217ED}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "CAC2Tests", "..\CAC2\CAC2Tests\CAC2Tests.csproj", "{91570CAC-A375-48EC-9E49-C9357739FDAE}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{EA252E79-A8F2-45E7-BED2-67D1C8F217ED}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{EA252E79-A8F2-45E7-BED2-67D1C8F217ED}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{EA252E79-A8F2-45E7-BED2-67D1C8F217ED}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{EA252E79-A8F2-45E7-BED2-67D1C8F217ED}.Release|Any CPU.Build.0 = Release|Any CPU
+		{91570CAC-A375-48EC-9E49-C9357739FDAE}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{91570CAC-A375-48EC-9E49-C9357739FDAE}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{91570CAC-A375-48EC-9E49-C9357739FDAE}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{91570CAC-A375-48EC-9E49-C9357739FDAE}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {3A5AF950-AE40-42AF-80E5-1EAE20ABF9FB}
+	EndGlobalSection
+EndGlobal
