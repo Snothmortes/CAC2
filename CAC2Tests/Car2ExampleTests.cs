@@ -185,5 +185,28 @@
 
             Assert.IsFalse(car.EngineIsRunning, "Engine could not be running!");
         }
+
+        [TestCase(13, 113, 17, 5)]
+        public void Car2RandomTests(int maxAcceleration, int finalSpeed, int freeWheel, int brakeBy) {
+            var car = new Car(20, maxAcceleration);
+
+            car.EngineStart();
+
+            car.Accelerate(250);
+            car.Accelerate(250);
+            car.Accelerate(250);
+            car.Accelerate(250);
+            car.Accelerate(250);
+            car.Accelerate(250);
+            car.Accelerate(250);
+            car.Accelerate(250);
+            car.Accelerate(250);
+            car.Accelerate(250);
+            car.BrakeBy(brakeBy);
+            Enumerable.Range(0,freeWheel).ToList().ForEach(_ => car.FreeWheel());
+            car.Accelerate(finalSpeed);
+
+            Assert.AreEqual(19.98d, car.fuelTankDisplay.FillLevel, "Wrong fuel tank fill level!");
+        }
     }
 }

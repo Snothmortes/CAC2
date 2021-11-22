@@ -38,24 +38,28 @@
         public void BrakeBy(int speed) => drivingProcessor.ReduceSpeed(speed);
 
         public void Accelerate(int speed) {
-            speed = speed > 250 ? 250 : speed;
+            Console.WriteLine($"Accelerate({speed}) => fuelTankDisplay: {(engine as Engine)!.FuelTank.FillLevel} => ActualSpeed: {drivingProcessor.ActualSpeed}");
 
+            speed = speed > 250 ? 250 : speed;
+            if ((engine as Engine)!.FuelTank.FillLevel == 0)
+                EngineStop();
             if (!EngineIsRunning)
                 return;
             if (speed < drivingInformationDisplay.ActualSpeed) {
                 FreeWheel();
+                Console.WriteLine($"Accelerate({speed}) => fuelTankDisplay: {(engine as Engine)!.FuelTank.FillLevel} => ActualSpeed: {drivingProcessor.ActualSpeed}");
                 return;
             }
 
             drivingProcessor.IncreaseSpeedTo(speed);
 
             var consumeSwitch = new Dictionary<Func<int, bool>, Action>() {
-                { x => x <= 60, () => (engine as Engine)!.Consume(0.002)},
-                { x => x <= 100, () => (engine as Engine)!.Consume(0.0014)},
-                { x => x <= 140, () => (engine as Engine)!.Consume(0.002)},
-                { x => x <= 200, () => (engine as Engine)!.Consume(0.0025)},
-                { x => x <= 250, () => (engine as Engine)!.Consume(0.0030)},
-            };
+            { x => x <= 60, () => (engine as Engine)!.Consume(0.002)},
+            { x => x <= 100, () => (engine as Engine)!.Consume(0.0014)},
+            { x => x <= 140, () => (engine as Engine)!.Consume(0.002)},
+            { x => x <= 200, () => (engine as Engine)!.Consume(0.0025)},
+            { x => x <= 250, () => (engine as Engine)!.Consume(0.0030)},
+        };
             consumeSwitch.First(sw => sw.Key(drivingProcessor.ActualSpeed)).Value();
         }
 
@@ -65,6 +69,9 @@
         }
 
         public void EngineStart() {
+            Console.WriteLine($"fuelLevel: {fuelTankDisplay.FillLevel}");
+            Console.WriteLine($"maxAcceleration: {_maxAcceleration}");
+            Console.WriteLine($"ActualSpeed: {drivingInformationDisplay.ActualSpeed}");
             engine.Start();
             (drivingProcessor as DrivingProcessor)!.MaxAcceleration = _maxAcceleration;
         }
